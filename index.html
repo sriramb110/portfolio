@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sriram B – Frontend Developer</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #1a2744;
+    --accent: #2f6fd4;
+    --accent-light: #ddeaff;
+    --text: #222;
+    --muted: #555;
+    --border: #d4dbe8;
+    --bg: #ffffff;
+    --section-gap: 28px;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #eef2f7;
+    color: var(--text);
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .page {
+    max-width: 820px;
+    margin: 30px auto;
+    background: var(--bg);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--navy);
+    padding: 36px 44px 28px;
+    color: white;
+  }
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 20px;
+  }
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    letter-spacing: 1px;
+    line-height: 1.1;
+    color: #fff;
+  }
+  .header .title-tag {
+    display: inline-block;
+    margin-top: 8px;
+    background: var(--accent);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 20px;
+  }
+
+  /* Contact grid */
+  .contact-grid {
+    margin-top: 22px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 40px;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    padding-top: 18px;
+  }
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: rgba(255,255,255,0.88);
+    font-size: 12.5px;
+  }
+  .contact-item .icon {
+    width: 22px;
+    height: 22px;
+    background: rgba(255,255,255,0.12);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 11px;
+  }
+  .contact-item a {
+    color: rgba(255,255,255,0.88);
+    text-decoration: none;
+  }
+  .contact-item a:hover { color: #fff; text-decoration: underline; }
+  .contact-item.full-width { grid-column: 1 / -1; }
+
+  /* ── BODY LAYOUT ── */
+  .body {
+    display: grid;
+    grid-template-columns: 210px 1fr;
+  }
+
+  /* ── LEFT SIDEBAR ── */
+  .sidebar {
+    background: #f4f7fd;
+    padding: 28px 22px;
+    border-right: 1px solid var(--border);
+  }
+
+  .sidebar-section { margin-bottom: var(--section-gap); }
+  .sidebar-section:last-child { margin-bottom: 0; }
+
+  .sidebar h3 {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--accent-light);
+  }
+
+  /* Skills */
+  .skill-category { margin-bottom: 12px; }
+  .skill-category-name {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 5px;
+  }
+  .skill-tag {
+    display: inline-block;
+    background: var(--accent-light);
+    color: var(--accent);
+    font-size: 10.5px;
+    font-weight: 500;
+    padding: 2px 9px;
+    border-radius: 12px;
+    margin: 2px 2px 2px 0;
+  }
+
+  /* Education */
+  .edu-item { margin-bottom: 14px; }
+  .edu-item:last-child { margin-bottom: 0; }
+  .edu-degree {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.3;
+  }
+  .edu-school {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+  .edu-year {
+    display: inline-block;
+    margin-top: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--accent);
+    background: var(--accent-light);
+    padding: 1px 8px;
+    border-radius: 10px;
+  }
+
+  /* Figma designs */
+  .design-item {
+    font-size: 11.5px;
+    color: var(--text);
+    padding: 5px 0;
+    border-bottom: 1px dashed var(--border);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .design-item:last-child { border-bottom: none; }
+  .design-item::before {
+    content: "◈";
+    color: var(--accent);
+    font-size: 10px;
+  }
+
+  /* ── MAIN CONTENT ── */
+  .main { padding: 28px 32px; }
+
+  .main-section { margin-bottom: var(--section-gap); }
+  .main-section:last-child { margin-bottom: 0; }
+
+  .section-heading {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-heading::after {
+    content: "";
+    flex: 1;
+    height: 1.5px;
+    background: linear-gradient(to right, var(--accent-light), transparent);
+  }
+
+  /* Profile */
+  .profile-text {
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.75;
+    background: var(--accent-light);
+    padding: 14px 16px;
+    border-left: 3px solid var(--accent);
+    border-radius: 0 6px 6px 0;
+  }
+
+  /* Experience */
+  .exp-item { margin-bottom: 20px; position: relative; padding-left: 16px; }
+  .exp-item::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 6px;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .exp-item::after {
+    content: "";
+    position: absolute;
+    left: 3px; top: 16px;
+    width: 1px;
+    bottom: -14px;
+    background: var(--border);
+  }
+  .exp-item:last-child::after { display: none; }
+
+  .exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 2px;
+  }
+  .exp-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+  .exp-date {
+    font-size: 10.5px;
+    font-weight: 600;
+    color: white;
+    background: var(--accent);
+    padding: 2px 10px;
+    border-radius: 12px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .exp-company {
+    font-size: 11.5px;
+    color: var(--muted);
+    font-weight: 500;
+    margin-bottom: 7px;
+  }
+  .exp-bullets { padding-left: 14px; }
+  .exp-bullets li {
+    font-size: 12px;
+    color: #444;
+    margin-bottom: 3px;
+    line-height: 1.55;
+  }
+
+  /* Projects */
+  .project-group { margin-bottom: 18px; }
+  .project-group-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+    padding: 3px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .project-item {
+    background: #fafbff;
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 6px 6px 0;
+    padding: 11px 14px;
+    margin-bottom: 10px;
+  }
+  .project-item:last-child { margin-bottom: 0; }
+  .project-title {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 3px;
+  }
+  .project-tech {
+    font-size: 10.5px;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 7px;
+  }
+  .project-bullets { padding-left: 14px; }
+  .project-bullets li {
+    font-size: 11.5px;
+    color: #444;
+    margin-bottom: 2px;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-top">
+      <div>
+        <h1>Sriram B</h1>
+        <span class="title-tag">Frontend Developer</span>
+      </div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <span class="icon">✉</span>
+        <a href="mailto:Sriramb110@gmail.com">Sriramb110@gmail.com</a>
+      </div>
+      <div class="contact-item">
+        <span class="icon">☎</span>
+        <span>(+91) 850-880-3850</span>
+      </div>
+      <div class="contact-item">
+        <span class="icon">⌂</span>
+        <span>Oottathur, Lalgudi, Trichy, Tamil Nadu, India</span>
+      </div>
+      <div class="contact-item">
+        <span class="icon">🐙</span>
+        <a href="https://github.com/sriramb110" target="_blank">github.com/sriramb110</a>
+      </div>
+      <div class="contact-item full-width">
+        <span class="icon">in</span>
+        <a href="https://www.linkedin.com/in/sriram997sriram007atgmail-com" target="_blank">linkedin.com/in/sriram997sriram007atgmail-com</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+
+      <div class="sidebar-section">
+        <h3>Technical Skills</h3>
+        <div class="skill-category">
+          <div class="skill-category-name">Frameworks & Libraries</div>
+          <span class="skill-tag">React</span>
+          <span class="skill-tag">React Native</span>
+          <span class="skill-tag">Angular</span>
+          <span class="skill-tag">Next.js</span>
+          <span class="skill-tag">Nx</span>
+        </div>
+        <div class="skill-category">
+          <div class="skill-category-name">Languages</div>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">TypeScript</span>
+        </div>
+        <div class="skill-category">
+          <div class="skill-category-name">Styling</div>
+          <span class="skill-tag">Tailwind CSS</span>
+          <span class="skill-tag">CSS3</span>
+        </div>
+        <div class="skill-category">
+          <div class="skill-category-name">Design</div>
+          <span class="skill-tag">Figma (UI/UX)</span>
+        </div>
+        <div class="skill-category">
+          <div class="skill-category-name">State & API</div>
+          <span class="skill-tag">React Hooks</span>
+          <span class="skill-tag">RESTful APIs</span>
+          <span class="skill-tag">Axios</span>
+          <span class="skill-tag">Fetch</span>
+        </div>
+        <div class="skill-category">
+          <div class="skill-category-name">Testing & Data</div>
+          <span class="skill-tag">Jest</span>
+          <span class="skill-tag">React Testing Library</span>
+          <span class="skill-tag">D3.js</span>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <h3>Figma UI Designs</h3>
+        <div class="design-item">Car Wash POS System</div>
+        <div class="design-item">Hotel Management POS System</div>
+      </div>
+
+      <div class="sidebar-section">
+        <h3>Education</h3>
+        <div class="edu-item">
+          <div class="edu-degree">B.E. – Mechanical Engineering</div>
+          <div class="edu-school">Dhanalakshmi Srinivasan Engineering College</div>
+          <span class="edu-year">2018</span>
+        </div>
+        <div class="edu-item">
+          <div class="edu-degree">DME – Mechanical Engineering</div>
+          <div class="edu-school">Dhanalakshmi Srinivasan Polytechnic College</div>
+          <span class="edu-year">2015</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- MAIN -->
+    <div class="main">
+
+      <!-- Profile -->
+      <div class="main-section">
+        <div class="section-heading">Profile</div>
+        <p class="profile-text">
+          Frontend developer skilled in Angular, React, Next.js, and Figma, delivering responsive, user-focused web applications with strong design collaboration. Experienced in leading projects from design through backend integration, ensuring seamless user experiences delivered on time.
+        </p>
+      </div>
+
+      <!-- Experience -->
+      <div class="main-section">
+        <div class="section-heading">Experience</div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <div class="exp-title">Frontend Developer & UI/UX Designer</div>
+            <span class="exp-date">Jun 2023 – Present</span>
+          </div>
+          <div class="exp-company">iMetanic Pvt. Ltd., Trichy</div>
+          <ul class="exp-bullets">
+            <li>Managed complete project workflows, creating user-friendly experiences for clients.</li>
+            <li>Led a team to maintain projects within deadlines, coordinating production tasks and APIs with the backend team.</li>
+            <li>Suggested design ideas and ensured proper backend code integration across all projects.</li>
+          </ul>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <div class="exp-title">Assembly Line In-Charge</div>
+            <span class="exp-date">Jan 2021 – May 2023</span>
+          </div>
+          <div class="exp-company">Kyowa Cast India Pvt. Ltd. (Yamaha Vendor Park), Chennai</div>
+          <ul class="exp-bullets">
+            <li>Managed yearly production maintenance and orders for product-based child parts.</li>
+            <li>Maintained machine lifetime records and handled daily manpower for operations.</li>
+          </ul>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <div class="exp-title">Storekeeper</div>
+            <span class="exp-date">Jun 2019 – Nov 2019</span>
+          </div>
+          <div class="exp-company">QCON, Qatar</div>
+          <ul class="exp-bullets">
+            <li>Managed inventory, tracking incoming and outgoing stock with accurate records.</li>
+            <li>Coordinated with production and procurement teams to ensure timely material availability.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Projects -->
+      <div class="main-section">
+        <div class="section-heading">Projects</div>
+
+        <div class="project-group">
+          <div class="project-group-label">React</div>
+          <div class="project-item">
+            <div class="project-title">POS System – Laundry Services</div>
+            <div class="project-tech">React · CSS · JavaScript · useState</div>
+            <ul class="project-bullets">
+              <li>Developed a responsive POS system to streamline order management and billing.</li>
+              <li>Implemented dynamic item addition, pricing, and automated bill calculation.</li>
+              <li>Ensured efficient state management with React Hooks.</li>
+            </ul>
+          </div>
+          <div class="project-item">
+            <div class="project-title">POS System – General Shop Services</div>
+            <div class="project-tech">React · Tailwind CSS · TypeScript · useState</div>
+            <ul class="project-bullets">
+              <li>Built a responsive POS system with intuitive Tailwind CSS UI.</li>
+              <li>Integrated automated billing and real-time cost estimation.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="project-group">
+          <div class="project-group-label">Angular</div>
+          <div class="project-item">
+            <div class="project-title">Background Check System – Boyd Gaming</div>
+            <div class="project-tech">Angular 8 · Tailwind CSS · TypeScript · D3.js</div>
+            <ul class="project-bullets">
+              <li>Developed a background verification system ensuring FCRA compliance.</li>
+              <li>Managed verification for college students and job interview candidates.</li>
+              <li>Led a team maintaining high accuracy and legal compliance throughout.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="project-group">
+          <div class="project-group-label">Next.js · Nx Monorepo</div>
+          <div class="project-item">
+            <div class="project-title">Inventory Management System</div>
+            <div class="project-tech">Next.js · Nx · TypeScript · Tailwind CSS</div>
+            <ul class="project-bullets">
+              <li>Built real-time daily and on-spot stock maintenance features.</li>
+              <li>Managed vendor accounts with complete supplier transaction records.</li>
+              <li>Enforced FIFO methodology for optimal stock rotation and waste reduction.</li>
+              <li>Developed return and replacement management workflows.</li>
+            </ul>
+          </div>
+          <div class="project-item">
+            <div class="project-title">Accounts Management Module</div>
+            <div class="project-tech">Next.js · Nx · TypeScript · Tailwind CSS</div>
+            <ul class="project-bullets">
+              <li>Implemented a double-entry accounting system for accurate financial records.</li>
+              <li>Built customer and vendor account management with transaction tracking.</li>
+              <li>Developed office maintenance management for operational expense records.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
